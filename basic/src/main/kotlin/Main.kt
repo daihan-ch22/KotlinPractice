@@ -1,6 +1,8 @@
 import com.sun.jdi.DoubleValue
 import com.sun.jdi.FloatValue
+import org.jetbrains.annotations.Nullable
 import java.lang.StringBuilder
+import java.util.Arrays
 
 fun main(args: Array<String>) {
     println("Hello World!")
@@ -34,6 +36,12 @@ fun main(args: Array<String>) {
     val doorLockStatus = car.getDoorLockStatus()
 
     println("current doorlock status is $doorLockStatus")
+
+    arrMaker()
+
+    val dayAndFood: FunctionExec = FunctionExec("mango")
+    dayAndFood.getFoodAndDate()
+
 }
 
 private fun variableCheck(integerVal: Int = 3000, stringVal: String = "DEFAULTSTR", doubleValue: Double, floatValue: Float): String{
@@ -73,6 +81,27 @@ private fun stringMapper(string: String, mapper: (String) -> Int): Int {
     //Invoke function
     return mapper(string)
 }
+
+private fun arrMaker(): Unit {
+    val fishArr = arrayListOf<String>("fish1", "fish2", "fish3");
+    println("ArrMaker $fishArr")
+
+    val steps = Array(3) {
+        it * 3
+    }
+    println(steps.contentToString())
+
+    for(stringElement in steps){
+        println("stringElement : $stringElement")
+    }
+
+    for( (idx, element) in fishArr.withIndex() ){
+        println("Item at $idx is $element")
+    }
+}
+
+
+
 
 
 
