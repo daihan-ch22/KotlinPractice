@@ -1,16 +1,35 @@
 package exampleClasses
 
 import java.lang.StringBuilder
+import kotlin.math.PI
 
-class Aquarium (
-    private var length: Int = 100,
-    private var width: Int = 20,
-    private var height: Int = 100) {
+/**
+ * Use 'Open' keyword that the class can be a Subclass
+ */
+open class Aquarium (
+    open var length: Int = 100,
+    open var width: Int = 20,
+    open var height: Int = 100) {
 
-    var volume: Int
+    var setterVals: String = ""
+
+    open var volume: Int
         get() = width * height * length / 1000
         set(value) {
             height = (value * 1000) / (width * length)
+        }
+
+    open val shape = "rectangle"
+    open var water: Double = 0.0
+        get() = volume * 0.9
+
+    val valForGetter: String
+        get() = "valForGetter"
+
+    var varForSetter: String
+        get() = "varForSetter"
+        private set(value) {
+            varForSetter = value
         }
 
     init {
@@ -45,13 +64,11 @@ class Aquarium (
         mAquarium6.printSize("mAquarium6")
         mAquarium6.volume = 70
         mAquarium6.printSize("mAquarium6")
-
     }
 
     fun printSize(currentVariable: String){
 
         val sb: StringBuilder = StringBuilder()
-
 
         sb.append("currentClassVar: $currentVariable \n" +
                 "Width: $width cm \n" +
@@ -61,5 +78,39 @@ class Aquarium (
         println(sb.toString())
         println("Volume : $volume 1")
     }
+
+    fun buildAquariumWithShape(){
+        val aquarium7 = Aquarium(length = 25, width = 25, height = 40)
+        aquarium7.printSizeWithShape()
+
+        val towerTank = TowerTank(diameter = 25, height = 40)
+        towerTank.printSizeWithShape()
+    }
+    fun printSizeWithShape(){
+        println(shape)
+
+        val sb: StringBuilder = StringBuilder()
+        sb.append(
+                "Width: $width cm \n" +
+                "Height: $height cm \n" +
+                "Length: $length cm \n")
+        println(sb.toString())
+
+        println("Volume: $volume 1 Water: $water 1 (${water/volume*100.0})% full")
+    }
+
+}
+
+class TowerTank(override var height: Int, var diameter: Int) : Aquarium(height = height, width = diameter, length = diameter){
+
+    override var volume: Int
+        get() = (width/2 * length/2 * height/1000 * PI).toInt()
+        set(value) {
+            height = ((value * 1000 / PI) / (width/2 * length/2)).toInt()
+        }
+
+    override var water = volume * 0.8
+
+    override var shape = "cylinder"
 
 }
