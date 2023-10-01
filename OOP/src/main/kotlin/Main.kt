@@ -1,11 +1,7 @@
 import exampleClasses.Aquarium
+import exampleClasses.GoldColor
 import exampleClasses.Plecostomus
 import exampleClasses.Shark
-
-
-interface FishAction{
-    fun eat()
-}
 
 fun main(args: Array<String>) {
     println("=== Kotlin Class Practice - Aquarium ===")
@@ -23,11 +19,14 @@ fun main(args: Array<String>) {
 }
 
 fun makeFish() {
-    val shark = Shark()
+    val shark = Shark("sardine")
     val pleco = Plecostomus()
+    GoldColor.color = "GOLD"
 
     println("Shark: ${shark.color}")
     shark.eat()
+
     println("Plecostomus: ${pleco.color}")
     pleco.eat()
+
 }

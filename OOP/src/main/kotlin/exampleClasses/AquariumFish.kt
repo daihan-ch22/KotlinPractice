@@ -4,18 +4,31 @@ package exampleClasses
     abstract val color: String
 }*/
 
-class Shark: FishActions{
-
-    override val color = "black"
+class Shark(var food: String): FishActions, FishColor {
+    override var color: String = "Cyan"
     override fun eat() {
-        println("hunt and eat fish!")
+        color = "brown"
+        println("hunt and eat ${food}!")
     }
 
 }
 
-class Plecostomus: FishActions{
-    override val color: String = "gold"
+class Plecostomus(fishColor: FishColor = GoldColor):
+    FishActions by PrintingFishActions("eat algae"),
+    FishColor by GoldColor
+
+class PrintingFishActions(val food: String): FishActions{
     override fun eat() {
-        println("eat algae")
+        println(food)
     }
+}
+
+object GoldColor : FishColor {
+
+    private var receivedColorVal: String = "Color not yet decided"
+    override var color: String
+        get() = receivedColorVal
+        set(value) {
+            receivedColorVal = value
+        }
 }
