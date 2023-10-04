@@ -11,4 +11,17 @@
     <string name="task_title">All tasks completed</string>
     <string name="compliment">Nice work!</string>
     <string name="title_activity_main_title">MainTitleActivity</string>
+    <string name="title_activity_quadrant">QuadrantActivity</string>
+
+    <!-- Compose Quadrant -->
+    <string name="text_composable">Text composable</string>
+    <string name="image_composable">Image Composable</string>
+    <string name="row_composable">Row composable</string>
+    <string name="column_composable">Column composable</string>
+
+    <string name="text_content">Displays text and follows the recommended Material Design guidelines.</string>
+    <string name="image_content">Creates a composable that lays out and draws a given Painter class object.</string>
+    <string name="row_content">A layout composable that places its children in a horizontal sequence.</string>
+    <string name="column_content">A layout composable that places its children in a vertical sequence.</string>
+
 </resources>
