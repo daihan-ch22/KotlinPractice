@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,16 +50,21 @@ class BusinessCard : ComponentActivity() {
 fun BusinessCardApp() {
         Column (
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxSize().padding(top = 100.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 100.dp)
+            , verticalArrangement = Arrangement.Center
         ){
             Column () {
                 MainUI_Logo(
                     painter = painterResource(id = R.drawable.android_logo),
-                    fullName = "DAEHAN CHOI",
-                    title = "TITLE~"
+                    fullName = "doni",
+                    title = "TITLE"
                 )
             }
-            Column (){
+            Column (
+                modifier = Modifier.padding(bottom = 40.dp)
+            ){
                 MainUI_Info()
             }
         }
@@ -88,36 +94,35 @@ fun MainUI_Logo(
 fun MainUI_Info(
 ){
     Column (
-        modifier = Modifier.padding(top = 50.dp).border(1.dp,Color.Green)
+        modifier = Modifier
+            .padding(top = 50.dp)
+            .border(1.dp, Color.Green),
+        verticalArrangement = Arrangement.Bottom
     ){
         Row (
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.weight(1f)
         ) {
             val painter: Painter = painterResource(id = R.drawable.android_logo)
             Image(painter = painter, contentDescription = null, Modifier.size(30.dp))
+
             Text(text = "+82 010 0000 0000", fontSize = 20.sp)
         }
         Row (
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.weight(1f)
         ) {
             val painter: Painter = painterResource(id = R.drawable.android_logo)
             Image(painter = painter, contentDescription = null,
                 Modifier
-                    .size(30.dp)
-                    .padding(2.dp))
+                    .size(30.dp))
             Text(text = "@socialMediaHash", fontSize = 20.sp)
         }
         Row (
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.weight(1f)
         ) {
             val painter: Painter = painterResource(id = R.drawable.android_logo)
             Image(painter = painter, contentDescription = null,
                 Modifier
-                    .size(30.dp)
-                    .padding(2.dp))
+                    .size(30.dp))
             Text(text = "dan@gmail.com", fontSize = 20.sp)
         }
     }
