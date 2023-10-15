@@ -21,6 +21,9 @@ fun main(args: Array<String>) {
 
     println("=========write extensions==========")
     WriteExtensions.writeExtensions()
+
+    val getsetPrac = GetSetPractice("Android", "Watch", 0)
+    println(getsetPrac.getDeviceStatus1())
 }
 
 class CompanionClass {
