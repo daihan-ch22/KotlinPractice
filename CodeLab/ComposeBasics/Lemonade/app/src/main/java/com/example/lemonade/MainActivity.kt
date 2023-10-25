@@ -2,6 +2,7 @@ package com.example.lemonade
 
 import android.os.Bundle
 import android.view.RoundedCorner
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.magnifier
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -40,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import com.example.lemonade.ui.theme.LemonadeTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -70,15 +73,34 @@ fun LemonadeApp(){
 
 @Composable
 fun LemonadeContents(
-    modifier: Modifier = Modifier,
-    image: Painter,
-    description: String
-    ){
+    modifier: Modifier = Modifier
+){
 
-    var stringInfoHolder by remember {
-        mutableStateOf("")
+    // current stage
+    var currentStage = 1
+
+    when(currentStage){
+        1 -> {
+            Container(
+                modifier = modifier,
+                image = painterResource(id = R.drawable.lemon_tree),
+                description = stringResource(id = R.string.LEMON_TREE),
+                currentStage
+            )
+        }
+        2 -> R.drawable.lemon_squeeze
+        3 -> R.drawable.lemon_drink
+        else -> R.drawable.lemon_restart
     }
+}
 
+@Composable
+fun Container(
+    modifier: Modifier,
+    image: Painter,
+    description: String,
+    currentStep: Int
+){
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -86,15 +108,14 @@ fun LemonadeContents(
         Box(
             modifier = modifier.clip(RoundedCornerShape(10.dp))
         ) {
-            Image(painter = painterResource(id = R.drawable.lemon_tree), contentDescription = "LemonTree",
+
+            Image(painter = image, contentDescription = description,
                 modifier
-                    .background(
-                        Color.Cyan
-                    )
+                    .background(Color.Cyan)
                     .size(200.dp)
                     .padding(10.dp)
                     .clickable {
-                        //TODO onclick event
+                        //TODO: when click the image
                     })
         }
 
