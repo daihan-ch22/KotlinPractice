@@ -40,8 +40,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lemonade.ui.theme.LemonadeTheme
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,51 +80,112 @@ fun LemonadeContents(
 ){
 
     // current stage
-    var currentStage = 1
+    var currentStage: Int by remember {
+        mutableStateOf(1)
+    }
 
     when(currentStage){
         1 -> {
-            Container(
-                modifier = modifier,
-                image = painterResource(id = R.drawable.lemon_tree),
-                description = stringResource(id = R.string.LEMON_TREE),
-                currentStage
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Box(
+                    modifier = modifier.clip(RoundedCornerShape(10.dp))
+                ) {
+                    Image(painter = painterResource(id = R.drawable.lemon_tree),
+                        contentDescription = stringResource(
+                            id = R.string.LEMON_TREE
+                        ),
+                        modifier
+                            .background(Color.Cyan)
+                            .size(200.dp)
+                            .padding(10.dp)
+                            .clickable {
+                                currentStage = 2
+                            })
+                }
+                Spacer(modifier = modifier.size(16.dp))
+                Text(
+                    text = stringResource(id = R.string.TAP_LEMON),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
+            }
         }
-        2 -> R.drawable.lemon_squeeze
-        3 -> R.drawable.lemon_drink
-        else -> R.drawable.lemon_restart
-    }
-}
-
-@Composable
-fun Container(
-    modifier: Modifier,
-    image: Painter,
-    description: String,
-    currentStep: Int
-){
-    Column (
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ){
-        Box(
-            modifier = modifier.clip(RoundedCornerShape(10.dp))
-        ) {
-
-            Image(painter = image, contentDescription = description,
-                modifier
-                    .background(Color.Cyan)
-                    .size(200.dp)
-                    .padding(10.dp)
-                    .clickable {
-                        //TODO: when click the image
-                    })
+        2 -> {
+            val randomNum = (2..4).random()
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ){
+                    Box(
+                        modifier = modifier.clip(RoundedCornerShape(10.dp))
+                    ) {
+                        Image(painter = painterResource(id = R.drawable.lemon_squeeze), contentDescription = stringResource(
+                            id = R.string.KEEP_TAPPING
+                        ),
+                            modifier
+                                .background(Color.Cyan)
+                                .size(200.dp)
+                                .padding(10.dp)
+                                .clickable {
+                                    {
+                                        //TODO: CLICK loop
+                                    }
+                                    currentStage = 3
+                                })
+                    }
+                    Spacer(modifier = modifier.size(16.dp))
+                    Text(text = stringResource(id = R.string.KEEP_TAPPING), fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                }
         }
-
-        Spacer(modifier = modifier.size(16.dp))
-
-        Text(text = stringResource(id = R.string.TAP_LEMON), fontWeight = FontWeight.Bold, fontSize = 18.sp)
+        3 -> {
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ){
+                Box(
+                    modifier = modifier.clip(RoundedCornerShape(10.dp))
+                ) {
+                    Image(painter = painterResource(id = R.drawable.lemon_drink), contentDescription = stringResource(
+                        id = R.string.GLASS_OF_LEMONADE
+                    ),
+                        modifier
+                            .background(Color.Cyan)
+                            .size(200.dp)
+                            .padding(10.dp)
+                            .clickable {
+                                currentStage = 4
+                            })
+                }
+                Spacer(modifier = modifier.size(16.dp))
+                Text(text = stringResource(id = R.string.TAP_TO_DRINK), fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            }
+        }
+        else -> {
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ){
+                Box(
+                    modifier = modifier.clip(RoundedCornerShape(10.dp))
+                ) {
+                    Image(painter = painterResource(id = R.drawable.lemon_restart), contentDescription = stringResource(
+                        id = R.string.EMPTY_GLASS
+                    ),
+                        modifier
+                            .background(Color.Cyan)
+                            .size(200.dp)
+                            .padding(10.dp)
+                            .clickable {
+                                currentStage = 1
+                            })
+                }
+                Spacer(modifier = modifier.size(16.dp))
+                Text(text = stringResource(id = R.string.TAP_EMPTY_GLASS), fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            }
+        }
     }
 }
 
