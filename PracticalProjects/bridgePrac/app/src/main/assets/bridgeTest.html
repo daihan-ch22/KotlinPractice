@@ -1,0 +1,19 @@
+<Html>
+<Head>
+    <title>
+        Hybrid App Bridge Test
+    </title>
+</Head>
+<Body>
+<!-- In this example we use the anchor tag for linking one page to another by using the href attribute
+which specify the url of the second page which you want to link.-->
+
+<button type="button" onclick="externalBrowserOpen()">externalBrowserOpen Test</button>
+
+<script>
+function externalBrowserOpen(){
+    native.externalBrowserOpen("https://m.naver.com");
+}
+</script>
+</Body>
+</Html>
