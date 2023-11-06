@@ -6,10 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -17,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -41,22 +44,33 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Preview
+@Composable
+fun ArtSpaceAppPreview(){
+    ArtSpaceApp()
+}
+
 @Composable
 fun ArtSpaceApp(){
 
+    val currentArtId by remember { mutableStateOf(1) }
+    
+    var artIndex by remember {
+        mutableStateOf(1)
+    }
+
     //ART FRAME
-    val artId by remember { mutableStateOf("1") }
-    val contentDescriptionId by remember { mutableStateOf("1") }
 
     //ART DESCRIPTION
 
     //BUTTON
-    val currentArtId by remember { mutableStateOf(1) }
 
 
-    ArtFrame()
+    ArtFrame(1,1)
     Spacer(modifier = Modifier)
-    ArtDescription()
+    ArtDescription(1,1)
+    Spacer(modifier = Modifier)
+    ArtSwitchButton()
 }
 
 @Composable
@@ -95,15 +109,28 @@ fun ArtDescription(
     ){
         //TITLE
         Column(modifier = Modifier) {
-            Text(text = )
+            Text(text = "image1")
         }
 
         //DETAILS
+        Column(modifier = Modifier) {
+            Text(text = "image2")
+        }
     }
 
 }
 
 @Composable
 fun ArtSwitchButton(){
+    Row {
+        //PREVIOUS BUTTON
+        Button(onClick = { /*TODO*/ }) {
+           Text(text = "previous") 
+        }
 
+        //NEXT BUTTON
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "next")
+        }
+    }
 }
