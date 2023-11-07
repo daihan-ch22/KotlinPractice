@@ -30,7 +30,7 @@ class TipUITest {
 
         val expectedTip = NumberFormat.getCurrencyInstance().format(2)
         composeTestRule
-            .onNodeWithText("Tip Amou2nt: $expectedTip")
+            .onNodeWithText("Tip Amount: $expectedTip")
             .assertExists("No node with this text was found.") //error description
     }
 }

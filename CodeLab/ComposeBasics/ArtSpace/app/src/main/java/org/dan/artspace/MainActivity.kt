@@ -22,7 +22,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.dan.artspace.ui.theme.ArtSpaceTheme
@@ -37,6 +39,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
+
+
 
                 }
             }
@@ -53,8 +58,6 @@ fun ArtSpaceAppPreview(){
 @Composable
 fun ArtSpaceApp(){
 
-    val currentArtId by remember { mutableStateOf(1) }
-    
     var artIndex by remember {
         mutableStateOf(1)
     }
@@ -66,22 +69,22 @@ fun ArtSpaceApp(){
     //BUTTON
 
 
-    ArtFrame(1,1)
+    ArtFrame(artIndex)
     Spacer(modifier = Modifier)
-    ArtDescription(1,1)
+    ArtDescription(artIndex)
     Spacer(modifier = Modifier)
-    ArtSwitchButton()
+    ArtSwitchButton(artIndex)
 }
 
 @Composable
 fun ArtFrame(
-    painterResourceId: Int,
-    contentDescriptionId: Int
+    artIndex: Int
 ){
-    val contentDescription: String = when(contentDescriptionId){
-        1 -> ""
-        2 -> ""
-        else -> "0"
+
+    val painterResource = when(artIndex){
+        1 -> painterResource(id = R.drawable.mona)
+        2 -> painterResource(id = R.drawable.girlwithapearl)
+        else -> painterResource(id = R.drawable.starrynight)
     }
 
     Column(
@@ -92,15 +95,14 @@ fun ArtFrame(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(
-            painter = painterResource(id = painterResourceId),
-            contentDescription = contentDescription)
+            painter = painterResource,
+            contentDescription = null)
     }
 }
 
 @Composable
 fun ArtDescription(
-    artTitle: Int,
-    artDetail: Int
+    artIndex: Int
 ){
 
     Column(
@@ -121,7 +123,9 @@ fun ArtDescription(
 }
 
 @Composable
-fun ArtSwitchButton(){
+fun ArtSwitchButton(
+    artIndex: Int
+){
     Row {
         //PREVIOUS BUTTON
         Button(onClick = { /*TODO*/ }) {
