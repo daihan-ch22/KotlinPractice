@@ -39,10 +39,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-
-
-
+                    ArtSpaceApp()
                 }
             }
         }
@@ -58,35 +55,39 @@ fun ArtSpaceAppPreview(){
 @Composable
 fun ArtSpaceApp(){
 
-    var artIndex by remember {
+    val artIndex by remember {
         mutableStateOf(1)
     }
 
-    //ART FRAME
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
 
-    //ART DESCRIPTION
+    ) {
+        //ART FRAME
+        ArtFrame(artIndex = artIndex)
 
-    //BUTTON
+        //ART DESCRIPTION
+        ArtDescription(artIndex = artIndex)
 
-
-    ArtFrame(artIndex)
-    Spacer(modifier = Modifier)
-    ArtDescription(artIndex)
-    Spacer(modifier = Modifier)
-    ArtSwitchButton(artIndex)
+        //BUTTON
+        ArtSwitchButton(artIndex = artIndex)
+    }
 }
 
 @Composable
 fun ArtFrame(
     artIndex: Int
 ){
-
     val painterResource = when(artIndex){
         1 -> painterResource(id = R.drawable.mona)
         2 -> painterResource(id = R.drawable.girlwithapearl)
         else -> painterResource(id = R.drawable.starrynight)
     }
-
+    val description = when(artIndex){
+        1 -> "Mona Lisa"
+        2 -> "Girl with a pearl earring"
+        else -> "Starry Night"
+    }
     Column(
         modifier = Modifier
             .padding(20.dp)
@@ -96,7 +97,7 @@ fun ArtFrame(
     ) {
         Image(
             painter = painterResource,
-            contentDescription = null)
+            contentDescription = description)
     }
 }
 
@@ -104,6 +105,16 @@ fun ArtFrame(
 fun ArtDescription(
     artIndex: Int
 ){
+    val artTitle = when(artIndex){
+        1 -> stringResource(id = R.string.mona)
+        2 -> stringResource(id = R.string.girl_with_a_pearl_earring)
+        else -> stringResource(id = R.string.the_starry_night)
+    }
+    val artist = when(artIndex){
+        1 -> stringResource(id = R.string.mona_artist)
+        2 -> stringResource(id = R.string.girl_with_a_pearl_artist)
+        else -> stringResource(id = R.string.the_starry_night_artist)
+    }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -111,29 +122,32 @@ fun ArtDescription(
     ){
         //TITLE
         Column(modifier = Modifier) {
-            Text(text = "image1")
+            Text(text = artTitle)
         }
 
         //DETAILS
         Column(modifier = Modifier) {
-            Text(text = "image2")
+            Text(text = artist)
         }
     }
-
 }
 
 @Composable
 fun ArtSwitchButton(
     artIndex: Int
 ){
-    Row {
+    Row(
+    ) {
         //PREVIOUS BUTTON
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {
+
+        }, modifier = Modifier.weight(1f)) {
            Text(text = "previous") 
         }
 
         //NEXT BUTTON
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { /*TODO*/ },
+            modifier = Modifier.weight(1f)) {
             Text(text = "next")
         }
     }
