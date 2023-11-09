@@ -101,14 +101,14 @@ fun ArtFrame(
     }
 
     val imageModifier = Modifier
-        .size(150.dp)
+        .size(200.dp)
         .border(BorderStroke(1.dp, Color.Gray))
         .padding(20.dp)
 
     Column(
         modifier = Modifier
-            .size(200.dp)
-            .padding(20.dp),
+            .size(250.dp)
+            .padding(10.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -162,8 +162,8 @@ fun ArtSwitchButton(
     ) {
         //PREVIOUS BUTTON
         Button(onClick = {
-            index += 1
-            if(index == 4) index = 1
+            index -= 1
+            if(index == 0) index = 3
 
             onClickCallback(index)
 
@@ -177,8 +177,8 @@ fun ArtSwitchButton(
         //NEXT BUTTON
         Button(
             onClick = {
-                index -= 1
-                if(index == 0) index = 3
+                index += 1
+                if(index == 4) index = 1
                 onClickCallback(index)
             },
             modifier = Modifier
