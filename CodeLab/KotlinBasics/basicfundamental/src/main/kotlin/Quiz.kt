@@ -15,6 +15,24 @@ class Quiz {
     }
 }
 
+/**
+ * 확장 속성 추가
+ * 데이터 저장은 안되기때문에 get만 사용 가능하다.
+ */
+val Quiz.StudentProgress.progressText: String
+    get() = "${answered} of ${total} answered."
+
+/**
+ * 확장 함수
+ * 클래스 내부에는 정의 되어있지 않지만 실제 내부 메서드가 있는 것 처럼 동작한다.
+ */
+fun Quiz.StudentProgress.printProgressBar(){
+    repeat(Quiz.answered) { print("▓") }
+    repeat(Quiz.total - Quiz.answered) { print("▒") }
+    println()
+    println(Quiz.progressText)
+}
+
 fun main(args: Array<String>){
-    println("${Quiz.answered} of ${Quiz.total} answered.")
+    Quiz.printProgressBar()
 }
