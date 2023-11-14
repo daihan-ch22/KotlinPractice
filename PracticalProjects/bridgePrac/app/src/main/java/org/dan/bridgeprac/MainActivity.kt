@@ -9,6 +9,9 @@ import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import org.dan.bridgeprac.databinding.ActivityMainBinding
+import org.dan.bridgeprac.webview.CustomWebChromeClient
+import org.dan.bridgeprac.webview.CustomWebView
+import org.dan.bridgeprac.webview.CustomWebViewClient
 
 class MainActivity : AppCompatActivity(){
 
@@ -18,6 +21,12 @@ class MainActivity : AppCompatActivity(){
         val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
+        val mWebView = activityMainBinding.customWebView
+
+        mWebView.run {
+            webViewClient = CustomWebViewClient()
+            webChromeClient = CustomWebChromeClient()
+        }
 
         activityMainBinding.customWebView.loadTargetUrl("file:///android_asset/bridgeTest.html")
     }

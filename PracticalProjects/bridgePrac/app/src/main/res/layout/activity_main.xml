@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <org.dan.bridgeprac.CustomWebView
+    <org.dan.bridgeprac.webview.CustomWebView
         android:id="@+id/customWebView"
         android:layout_width="410dp"
         android:layout_height="734dp"

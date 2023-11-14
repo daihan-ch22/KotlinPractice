@@ -1,11 +1,11 @@
-package org.dan.bridgeprac
+package org.dan.bridgeprac.webview
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
-import android.net.Uri
 import android.util.AttributeSet
 import android.webkit.WebView
+import org.dan.bridgeprac.BridgeInterfaceImpl
+import org.dan.bridgeprac.BridgeList
 
 @SuppressLint("SetJavaScriptEnabled")
 class CustomWebView(
@@ -27,6 +27,7 @@ class CustomWebView(
 
         with(settings){
             javaScriptEnabled = true
+            domStorageEnabled = true
         }
     }
 
