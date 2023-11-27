@@ -75,8 +75,24 @@ fun printFullMenu(){
     }
 }
 
+/**
+ * Filter()
+ */
+fun printSoftCookie(){
+    val softBakedMenu = cookies.filter {
+        it.softBaked
+    }
+    println("SoftCookie: ")
+    softBakedMenu.forEach{
+        println("${it.name} - $${it.price}")
+    }
+}
+
 fun main(){
     forEach()
 
     printFullMenu()
+
+    printSoftCookie()
+
 }
