@@ -62,13 +62,13 @@ val fullMenu = cookies.map {
 /**
  * 배열 loop
  */
-fun forEach(){
+fun forEach() {
     cookies.forEach {
         println("Menu item = ${it.name}")
     }
 }
 
-fun printFullMenu(){
+fun printFullMenu() {
     println("Full Menu : ")
     fullMenu.forEach {
         println(it)
@@ -78,21 +78,79 @@ fun printFullMenu(){
 /**
  * Filter()
  */
-fun printSoftCookie(){
+fun printSoftCookie() {
     val softBakedMenu = cookies.filter {
         it.softBaked
     }
     println("SoftCookie: ")
-    softBakedMenu.forEach{
+    softBakedMenu.forEach {
         println("${it.name} - $${it.price}")
     }
 }
 
-fun main(){
+/**
+ * GroupBy()
+ * LIST -> MAP
+ * @return Map<K,V>
+ */
+fun printSoftCookieByGroupBy() {
+    println("=============================")
+    val groupMenu = cookies.groupBy {
+        it.softBaked
+    }
+
+    val softBakedMenu = groupMenu[true] ?: listOf()
+    val chunkyBakedMenu = groupMenu[false] ?: listOf()
+
+    println("Soft Baked Cookies:")
+    softBakedMenu.forEach {
+        println("${it.name} - $${it.price}")
+    }
+    println()
+    println("Chunky Baked Cookies:")
+    chunkyBakedMenu.forEach {
+        println("${it.name} - $${it.price}")
+    }
+}
+
+/**
+ * Fold()
+ * multiple numbers -> one element (sum, result, etc)
+ * same as reduce()
+ * target.fold(numFormat){ do Stuff here }
+ */
+fun getTotalPrice() {
+    println()
+    val totalPrice = cookies.fold(0.0) { total, cookie ->
+        total + cookie.price
+    }
+
+    println("Total Cookie Price = $$totalPrice")
+}
+
+
+/**
+ * sortedBy()
+ * -> define how to sort data by "What"
+ */
+fun getSortedData(){
+
+    val alphabeticalMenu = cookies.sortedBy {
+        it.name
+    }
+    var count = 1
+    alphabeticalMenu.forEach {
+        println("SORTED BY ALPHABETICAL ORDER: ${count++} ${it.name}")
+    }
+}
+
+fun main() {
     forEach()
 
     printFullMenu()
 
-    printSoftCookie()
-
+    //printSoftCookie()
+    printSoftCookieByGroupBy()
+    getTotalPrice()
+    getSortedData()
 }
