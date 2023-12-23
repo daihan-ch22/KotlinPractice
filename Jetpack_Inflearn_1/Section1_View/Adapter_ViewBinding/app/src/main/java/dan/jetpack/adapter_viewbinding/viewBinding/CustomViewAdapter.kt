@@ -1,3 +1,4 @@
+/*
 package dan.jetpack.adapter_viewbinding.viewBinding
 
 import android.view.LayoutInflater
@@ -10,9 +11,11 @@ class CustomViewAdapter(
     private val dataSet : ArrayList<String>
 ) : RecyclerView.Adapter<CustomViewAdapter.ViewHolder>() {
 
-    /**
+    */
+/**
      * ViewHolder Class
-     */
+     *//*
+
     class ViewHolder(
         binding : TextRowItemBinding
     ) : RecyclerView.ViewHolder(binding.root){
@@ -34,4 +37,4 @@ class CustomViewAdapter(
     override fun getItemCount(): Int {
         return dataSet.size
     }
-}
+}*/
