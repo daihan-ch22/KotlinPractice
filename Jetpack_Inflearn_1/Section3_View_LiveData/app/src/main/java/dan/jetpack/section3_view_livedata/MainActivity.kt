@@ -20,9 +20,22 @@ class MainActivity : AppCompatActivity() {
             viewModel.plusLiveDataValue()
         }
 
-        viewModel.testMutableLiveData.observe(this, Observer {
-            findViewById<TextView>(R.id.textArea).text =
-                viewModel.testMutableLiveData.value.toString()
+        viewModel.testLiveData.observe(this, Observer {
+            findViewById<TextView>(R.id.textArea).text = it.toString()
         })
+
+    }
+
+    fun useMutableLiveData(){
+//        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+//
+//        findViewById<Button>(R.id.btnArea).setOnClickListener {
+//            viewModel.plusLiveDataValue()
+//        }
+//
+//        viewModel.testMutableLiveData.observe(this, Observer {
+//            //findViewById<TextView>(R.id.textArea).text = viewModel.testMutableLiveData.value.toString()
+//            findViewById<TextView>(R.id.textArea).text = it.toString()
+//        })
     }
 }
