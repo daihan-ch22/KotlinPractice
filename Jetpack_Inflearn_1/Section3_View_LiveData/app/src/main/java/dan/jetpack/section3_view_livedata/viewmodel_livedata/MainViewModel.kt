@@ -1,4 +1,4 @@
-package dan.jetpack.section3_view_livedata
+package dan.jetpack.section3_view_livedata.viewmodel_livedata
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

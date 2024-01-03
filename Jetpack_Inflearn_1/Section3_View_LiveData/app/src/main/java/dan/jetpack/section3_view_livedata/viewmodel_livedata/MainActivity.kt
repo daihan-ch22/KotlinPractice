@@ -1,4 +1,4 @@
-package dan.jetpack.section3_view_livedata
+package dan.jetpack.section3_view_livedata.viewmodel_livedata
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import dan.jetpack.section3_view_livedata.R
 
 class MainActivity : AppCompatActivity() {
 
