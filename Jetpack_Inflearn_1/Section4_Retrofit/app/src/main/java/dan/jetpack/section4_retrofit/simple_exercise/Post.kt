@@ -1,4 +1,4 @@
-package dan.jetpack.section4_retrofit
+package dan.jetpack.section4_retrofit.simple_exercise
 
 data class Post(
     val userId : Int,

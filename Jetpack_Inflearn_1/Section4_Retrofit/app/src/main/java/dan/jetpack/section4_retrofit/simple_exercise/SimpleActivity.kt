@@ -1,17 +1,17 @@
-package dan.jetpack.section4_retrofit
+package dan.jetpack.section4_retrofit.simple_exercise
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import dan.jetpack.section4_retrofit.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
-class MainActivity : AppCompatActivity() {
+class SimpleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_simple)
 
         val api = RetrofitInstance.getInstance().create(MyApi::class.java)
         api.getPost1().enqueue(object: Callback<Post> {
