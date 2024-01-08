@@ -1,4 +1,4 @@
-package dan.jetpack.section4_retrofit.simple_exercise
+package dan.jetpack.section4_retrofit.simple_exercise.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

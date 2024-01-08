@@ -2,38 +2,34 @@ package dan.jetpack.section4_retrofit.simple_exercise
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import dan.jetpack.section4_retrofit.R
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import dan.jetpack.section4_retrofit.simple_exercise.viewmodel.SimpleMainViewModel
+
 
 class SimpleActivity : AppCompatActivity() {
+
+    private lateinit var viewModel : SimpleMainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple)
 
-        val api = RetrofitInstance.getInstance().create(MyApi::class.java)
-        api.getPost1().enqueue(object: Callback<Post> {
-            override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                Log.d("API1", response.body().toString())
-            }
+        viewModel = ViewModelProvider(this)[SimpleMainViewModel::class.java]
+        viewModel.getPost1()
+        viewModel.getPostNumber(3)
 
-            override fun onFailure(call: Call<Post>, t: Throwable) {
-                Log.d("API1", "fail")
-            }
+        val area1 = findViewById<TextView>(R.id.area1)
+        val area2 = findViewById<TextView>(R.id.area2)
 
+        viewModel.liveWord1.observe(this, Observer {
+            area1.text = it.toString()
         })
 
-        api.getPostNumber(2).enqueue(object: Callback<Post> {
-            override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                Log.d("API2", response.body().toString())
-            }
-
-            override fun onFailure(call: Call<Post>, t: Throwable) {
-                Log.d("API2", "fail")
-            }
-
+        viewModel.liveWord2.observe(this, Observer {
+            area2.text = it.toString()
         })
+
     }
 }
