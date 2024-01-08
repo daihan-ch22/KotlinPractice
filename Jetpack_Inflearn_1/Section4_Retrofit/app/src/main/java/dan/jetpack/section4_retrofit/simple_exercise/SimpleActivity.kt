@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dan.jetpack.section4_retrofit.R
+import dan.jetpack.section4_retrofit.simple_exercise.adapter.CustomAdapter
+import dan.jetpack.section4_retrofit.simple_exercise.model.Post
 import dan.jetpack.section4_retrofit.simple_exercise.viewmodel.SimpleMainViewModel
 
 
@@ -19,6 +23,7 @@ class SimpleActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[SimpleMainViewModel::class.java]
         viewModel.getPost1()
         viewModel.getPostNumber(3)
+        viewModel.getPostAll()
 
         val area1 = findViewById<TextView>(R.id.area1)
         val area2 = findViewById<TextView>(R.id.area2)
@@ -29,6 +34,14 @@ class SimpleActivity : AppCompatActivity() {
 
         viewModel.liveWord2.observe(this, Observer {
             area2.text = it.toString()
+        })
+
+        val rv = findViewById<RecyclerView>(R.id.rv)
+
+        viewModel.liveWordList.observe(this, Observer {
+            val customAdapter = CustomAdapter(it as ArrayList<Post>)
+            rv.adapter = customAdapter
+            rv.layoutManager = LinearLayoutManager(this)
         })
 
     }
