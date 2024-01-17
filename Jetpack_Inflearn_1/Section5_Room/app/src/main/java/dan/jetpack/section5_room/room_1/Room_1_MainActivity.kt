@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dan.jetpack.section5_room.R
+import dan.jetpack.section5_room.room_1.adapter.CustomAdapter
 import dan.jetpack.section5_room.room_1.db.TextDatabase
 import dan.jetpack.section5_room.room_1.entity.TextEntity
 import dan.jetpack.section5_room.room_1.entity.WordEntity
@@ -36,6 +40,15 @@ class Room_1_MainActivity : AppCompatActivity() {
             viewModel.insertData(inputArea.text.toString())
             inputArea.setText("")
         }
+
+        val rv = findViewById<RecyclerView>(R.id.rv)
+
+        viewModel.textList.observe(this, Observer {
+            val customAdapter = CustomAdapter(it)
+            rv.adapter = customAdapter
+            rv.layoutManager = LinearLayoutManager(this)
+        })
+
         getAllBtn.setOnClickListener {
             viewModel.getData()
         }
