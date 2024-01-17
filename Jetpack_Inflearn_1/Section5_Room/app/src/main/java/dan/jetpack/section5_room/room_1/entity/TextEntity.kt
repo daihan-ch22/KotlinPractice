@@ -1,4 +1,4 @@
-package dan.jetpack.section5_room.room_1
+package dan.jetpack.section5_room.room_1.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

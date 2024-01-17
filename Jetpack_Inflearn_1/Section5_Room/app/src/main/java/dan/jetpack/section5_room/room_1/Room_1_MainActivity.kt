@@ -6,6 +6,9 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import dan.jetpack.section5_room.R
+import dan.jetpack.section5_room.room_1.db.TextDatabase
+import dan.jetpack.section5_room.room_1.entity.TextEntity
+import dan.jetpack.section5_room.room_1.entity.WordEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,18 +28,21 @@ class Room_1_MainActivity : AppCompatActivity() {
         insertBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 db.textDao().insert(TextEntity(0,inputArea.text.toString()))
+                db.wordDao().insert(WordEntity(0,inputArea.text.toString()))
                 inputArea.setText("")
             }
         }
         getAllBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.d("MAINACTIVITY", db.textDao().getAllData().toString())
+                Log.d("MAINACTIVITY", db.wordDao().getAllData().toString())
 
             }
         }
         deleteBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 db.textDao().deleteAllData()
+                db.wordDao().deleteAllData()
             }
         }
 
