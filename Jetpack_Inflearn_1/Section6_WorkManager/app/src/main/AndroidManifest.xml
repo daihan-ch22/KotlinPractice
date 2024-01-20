@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Section6_WorkManager"
         tools:targetApi="31">
         <activity
-            android:name=".progress.ProgressActivity"
+            android:name=".unique_work.UniqueWorkActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".coroutine.CoroutineActivity"
+            android:name=".periodic.PeriodicActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".progress.ProgressActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".coroutine.CoroutineActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".chaining.WorkManagerChainingActivity"
