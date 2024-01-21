@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dataTransfer.TransferFragment2">
+    tools:context=".dataTransfer_Animation.TransferFragment2"
+    android:background="#ffe200">
 
     <LinearLayout
         android:layout_width="match_parent"

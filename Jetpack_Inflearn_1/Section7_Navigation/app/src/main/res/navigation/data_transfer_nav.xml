@@ -7,16 +7,20 @@
 
     <fragment
         android:id="@+id/transferFragment1"
-        android:name="dan.jetpack.section7_navigation.dataTransfer.TransferFragment1"
+        android:name="dan.jetpack.section7_navigation.dataTransfer_Animation.TransferFragment1"
         android:label="fragment_transfer1"
         tools:layout="@layout/fragment_transfer1" >
         <action
             android:id="@+id/action_transferFragment1_to_transferFragment2"
-            app:destination="@id/transferFragment2" />
+            app:destination="@id/transferFragment2"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/transferFragment2"
-        android:name="dan.jetpack.section7_navigation.dataTransfer.TransferFragment2"
+        android:name="dan.jetpack.section7_navigation.dataTransfer_Animation.TransferFragment2"
         android:label="fragment_transfer2"
         tools:layout="@layout/fragment_transfer2" >
         <action
