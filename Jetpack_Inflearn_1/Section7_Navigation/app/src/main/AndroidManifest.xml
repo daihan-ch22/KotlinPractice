@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Section7_Navigation"
         tools:targetApi="31">
         <activity
-            android:name=".simpleGraph.SimpleGraphMainActivity"
+            android:name=".dataTransfer.DataTransferMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".introduction.IntroActivity"
+            android:name=".simpleGraph.SimpleGraphMainActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".introduction.IntroActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
