@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_test"
+    app:startDestination="@id/graphFragment1">
+
+    <fragment
+        android:id="@+id/graphFragment1"
+        android:name="dan.jetpack.section7_navigation.simpleGraph.GraphFragment1"
+        android:label="fragment_graph1"
+        tools:layout="@layout/fragment_graph1" >
+        <action
+            android:id="@+id/action_graphFragment1_to_graphFragment2"
+            app:destination="@id/graphFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/graphFragment2"
+        android:name="dan.jetpack.section7_navigation.simpleGraph.GraphFragment2"
+        android:label="fragment_graph2"
+        tools:layout="@layout/fragment_graph2" >
+        <action
+            android:id="@+id/action_graphFragment2_to_graphFragment3"
+            app:destination="@id/graphFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/graphFragment3"
+        android:name="dan.jetpack.section7_navigation.simpleGraph.GraphFragment3"
+        android:label="fragment_graph3"
+        tools:layout="@layout/fragment_graph3" >
+        <action
+            android:id="@+id/action_graphFragment3_to_graphFragment4"
+            app:destination="@id/graphFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/graphFragment4"
+        android:name="dan.jetpack.section7_navigation.simpleGraph.GraphFragment4"
+        android:label="fragment_graph4"
+        tools:layout="@layout/fragment_graph4" >
+        <action
+            android:id="@+id/action_graphFragment4_to_graphFragment5"
+            app:destination="@id/graphFragment5"
+            app:popUpTo="@id/graphFragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/graphFragment5"
+        android:name="dan.jetpack.section7_navigation.simpleGraph.GraphFragment5"
+        android:label="fragment_graph5"
+        tools:layout="@layout/fragment_graph5" >
+        <action
+            android:id="@+id/action_graphFragment5_to_graphFragment1"
+            app:destination="@id/graphFragment1" />
+    </fragment>
+</navigation>
