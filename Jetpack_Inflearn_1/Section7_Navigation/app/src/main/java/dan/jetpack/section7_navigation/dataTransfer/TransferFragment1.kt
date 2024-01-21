@@ -40,12 +40,18 @@ class TransferFragment1 : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        val bundle = Bundle()
-        bundle.putString("key", "value")
+//        val bundle = Bundle()
+//        bundle.putString("key", "value")
 
         val view = inflater.inflate(R.layout.fragment_transfer1, container, false)
+
+        //Safe Args사용 시 데이터를 안넘기게 되면 default값이 찍히게 된다.
+//        val action = TransferFragment1Directions.actionTransferFragment1ToTransferFragment2("abcdef")
+        val action = TransferFragment1Directions.actionTransferFragment1ToTransferFragment2("abcdef")
+
         view.findViewById<Button>(R.id.transfer_btn1).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_transferFragment1_to_transferFragment2, bundle)
+//            Navigation.findNavController(view).navigate(R.id.action_transferFragment1_to_transferFragment2, bundle)
+            Navigation.findNavController(view).navigate(action)
         }
         return view
     }

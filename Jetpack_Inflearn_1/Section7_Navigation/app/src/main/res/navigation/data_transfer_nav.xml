@@ -22,5 +22,9 @@
         <action
             android:id="@+id/action_transferFragment2_to_transferFragment1"
             app:destination="@id/transferFragment1" />
+        <argument
+            android:name="key"
+            app:argType="string"
+            android:defaultValue="디폴트값" />
     </fragment>
 </navigation>
