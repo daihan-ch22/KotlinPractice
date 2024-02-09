@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable
+            name="vm"
+            type="dan.jetpack.section1_twowaybinding.binding_adapter.BindingAdapterViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".binding_adapter.BindingAdapterActivity">
@@ -28,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="0"
+            myAge="@{vm.mutableAge}"
             android:textSize="50sp" />
 
         <ImageView
@@ -36,10 +46,12 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_margin="60dp"
+            myImg="@{vm.mutableAge}"
             android:src="@drawable/ic_launcher_background" />
 
         <Button
             android:id="@+id/plus_bindingAdapter"
+            android:onClick="@{ () -> vm.plus() }"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20sp"
@@ -49,3 +61,4 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
