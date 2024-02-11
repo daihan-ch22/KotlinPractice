@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Section1_TwoWayBinding"
-        tools:targetApi="31">
+        tools:targetApi="34">
         <activity
-            android:name=".binding_adapter.BindingAdapterActivity"
+            android:name=".integrated.IntegratedMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,15 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity-->
-<!--            android:name=".intro.TwoWayBinding1"-->
-<!--            android:exported="true">-->
+        <activity
+            android:name=".binding_adapter.BindingAdapterActivity"
+            android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
-<!--        </activity>-->
+        </activity>
     </application>
 
 </manifest>
