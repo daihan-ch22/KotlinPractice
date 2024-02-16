@@ -11,6 +11,7 @@ import dan.jetpack.section2_room_coroutineflow.room_flow.db.TextEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -39,15 +40,27 @@ class RoomFlow1Activity : AppCompatActivity() {
             }
         }
 
-        getAllBtn.setOnClickListener {
+//        getAllBtn.setOnClickListener {
+//
+//            CoroutineScope(Dispatchers.IO).launch {
+//                val resultText = db.textDao().getAllData().toString()
+//                withContext(Dispatchers.Main) {
+//                    resultArea.text = resultText
+//                }
+//            }
+//        }
 
-            CoroutineScope(Dispatchers.IO).launch {
-                val resultText = db.textDao().getAllData().toString()
-                withContext(Dispatchers.Main) {
+        // FLOW 사용
+        CoroutineScope(Dispatchers.IO).launch {
+            db.textDao().getAllDataFlow().collect(){
+                val resultText = it.toString()
+
+                withContext(Dispatchers.Main){
                     resultArea.text = resultText
                 }
             }
         }
+
 
         deleteBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
