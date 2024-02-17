@@ -3,6 +3,7 @@ package dan.jetpack.section3_roomadvanced_crud.repository
 import dan.jetpack.section3_roomadvanced_crud.MyApp
 import dan.jetpack.section3_roomadvanced_crud.db.MyDatabase
 import dan.jetpack.section3_roomadvanced_crud.db.entity.NumberEntity
+import kotlinx.coroutines.flow.Flow
 
 class Repository {
 
@@ -15,8 +16,8 @@ class Repository {
         db.numberDao().create(numberEntity)
     }
 
-    fun read() {
-        db.numberDao().read()
+    fun read(): Flow<List<NumberEntity>> {
+        return db.numberDao().read()
     }
 
     fun update(
