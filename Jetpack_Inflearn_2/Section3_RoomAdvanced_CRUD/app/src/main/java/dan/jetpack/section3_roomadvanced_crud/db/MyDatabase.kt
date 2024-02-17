@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import dan.jetpack.section3_roomadvanced_crud.db.dao.NumberDao
+import dan.jetpack.section3_roomadvanced_crud.db.entity.NumberEntity
 
 @Database(entities = [NumberEntity::class], version = 1)
 abstract class MyDatabase : RoomDatabase() {

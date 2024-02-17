@@ -1,4 +1,4 @@
-package dan.jetpack.section3_roomadvanced_crud.db
+package dan.jetpack.section3_roomadvanced_crud.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
