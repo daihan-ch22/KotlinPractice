@@ -1,5 +1,6 @@
 package dan.jetpack.section2_room_coroutineflow.room_flow_listadapter
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,6 +47,11 @@ class RoomFlowListAdaptActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        binding.next.setOnClickListener {
+            val intent = Intent(this, CRUDActivity::class.java)
+            startActivity(intent)
         }
     }
 }
