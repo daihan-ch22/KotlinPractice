@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Section2_Room_CoroutineFlow"
         tools:targetApi="34">
         <activity
-            android:name=".room_flow.RoomFlow1Activity"
+            android:name=".room_flow_listadapter.RoomFlowListAdaptActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".listadapter_diffutil.ListAdapter_DiffUtil_ExampleActivity"
+            android:name=".room_flow.RoomFlow1Activity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".listadapter_diffutil.ListAdapter_DiffUtil_ExampleActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
