@@ -11,6 +11,7 @@ import dan.jetpack.section4_room_techniques.db.entity.TextEntity2
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,8 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         insertBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
-                db.textDao().insert(TextEntity(0, inputArea.text.toString()))
-                db.textDao2().insert(TextEntity2(0, inputArea.text.toString(), "newtext"))
+                db.textDao().insert(TextEntity(0, inputArea.text.toString(), "text2", Calendar.getInstance().time))
                 inputArea.setText("")
             }
         }
@@ -39,14 +39,12 @@ class MainActivity : AppCompatActivity() {
         getAllBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.d(TAG, db.textDao().getAllData().toString())
-                Log.d(TAG, db.textDao2().getAllData().toString())
             }
         }
 
         deleteBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 db.textDao().deleteAllData()
-                db.textDao2().deleteAllData()
             }
         }
     }
