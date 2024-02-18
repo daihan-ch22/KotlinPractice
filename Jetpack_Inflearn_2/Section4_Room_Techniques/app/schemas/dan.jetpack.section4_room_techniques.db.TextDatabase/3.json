@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "ebfdf5e047935f74a0d346b7fbff64bf",
+    "identityHash": "c8fbbd54bd8f097ad0a136b14754ed4a",
     "entities": [
       {
         "tableName": "text_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `text` TEXT NOT NULL, `text2` TEXT NOT NULL DEFAULT 'this is text2 default', `currentDate` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `text` TEXT NOT NULL, `text2` TEXT NOT NULL DEFAULT 'this is text2 default', `currentDate` INTEGER NOT NULL DEFAULT d)",
         "fields": [
           {
             "fieldPath": "id",
@@ -28,10 +28,11 @@
             "defaultValue": "'this is text2 default'"
           },
           {
-            "fieldPath": "currentData",
+            "fieldPath": "currentDate",
             "columnName": "currentDate",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": true,
+            "defaultValue": "d"
           }
         ],
         "primaryKey": {
@@ -47,7 +48,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ebfdf5e047935f74a0d346b7fbff64bf')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c8fbbd54bd8f097ad0a136b14754ed4a')"
     ]
   }
 }

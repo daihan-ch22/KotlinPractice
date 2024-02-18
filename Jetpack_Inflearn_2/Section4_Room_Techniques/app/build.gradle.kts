@@ -50,6 +50,9 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    // DataStore
+    implementation("androidx.datastore:datastore-preferences-android:1.1.0-beta01")
+
     // ROOM
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")

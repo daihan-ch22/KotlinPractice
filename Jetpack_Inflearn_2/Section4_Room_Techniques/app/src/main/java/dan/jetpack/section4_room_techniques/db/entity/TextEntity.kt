@@ -20,8 +20,8 @@ data class TextEntity(
     @ColumnInfo(name = "text2", defaultValue = "this is text2 default")
     val text2: String,
 
-    @ColumnInfo(name = "currentDate", defaultValue = "")
-    val currentData : Date
+    @ColumnInfo(name = "currentDate", defaultValue = "d")
+    val currentDate : Date
 
 )
 
