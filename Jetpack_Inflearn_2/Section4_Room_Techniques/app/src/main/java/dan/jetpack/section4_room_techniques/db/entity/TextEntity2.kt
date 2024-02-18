@@ -12,6 +12,9 @@ data class TextEntity2(
     val id : Long,
 
     @ColumnInfo(name = "text")
-    val text: String
+    val text: String,
+
+    @ColumnInfo(name = "newText")
+    val newText : String
 
 )
