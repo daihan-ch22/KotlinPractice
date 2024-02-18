@@ -1,6 +1,7 @@
 package dan.jetpack.section4_room_techniques.db
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -9,7 +10,10 @@ import dan.jetpack.section4_room_techniques.db.entity.TextEntity
 
 @Database(
     entities = [TextEntity::class],
-    version = 1
+    version = 3,
+    autoMigrations = [
+        AutoMigration(from = 2, to = 3)
+    ]
 )
 abstract class TextDatabase : RoomDatabase() {
 
@@ -31,7 +35,9 @@ abstract class TextDatabase : RoomDatabase() {
                     context.applicationContext,
                     TextDatabase::class.java,
                     DB_NAME
-                ).fallbackToDestructiveMigration().build()
+                )
+                    //.fallbackToDestructiveMigration()
+                    .build()
 
                 INSTANCE = instance
 
