@@ -5,15 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import dan.jetpack.section4_room_techniques.db.dao.TextDao
+import dan.jetpack.section4_room_techniques.db.dao.TextDao2
 import dan.jetpack.section4_room_techniques.db.entity.TextEntity
+import dan.jetpack.section4_room_techniques.db.entity.TextEntity2
 
 @Database(
-    entities = [TextEntity::class],
-    version = 1
+    entities = [TextEntity::class, TextEntity2::class],
+    version = 2
 )
 abstract class TextDatabase : RoomDatabase() {
 
     abstract fun textDao() : TextDao
+    abstract fun textDao2() : TextDao2
 
     companion object {
 
@@ -31,7 +34,8 @@ abstract class TextDatabase : RoomDatabase() {
                     context.applicationContext,
                     TextDatabase::class.java,
                     DB_NAME
-                ).fallbackToDestructiveMigration().build()
+                ).fallbackToDestructiveMigration() // 데이터 구조 변경 시 이전 버전의 db 내용 날아감. (매우 주의)
+                    .build()
 
                 INSTANCE = instance
 
