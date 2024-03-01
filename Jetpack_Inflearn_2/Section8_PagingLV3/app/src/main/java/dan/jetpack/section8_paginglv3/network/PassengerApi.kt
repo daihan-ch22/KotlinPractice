@@ -6,12 +6,12 @@ import retrofit2.http.Query
 
 interface PassengerApi {
 
-    @GET("passenger")
-    suspend fun getData(
-        @Query("page")
-        page: Int,
-
-        @Query("size")
-        size: Int
-    ): Response<PassengerResponse>
+//    @GET("passenger")
+//    suspend fun getData(
+//        @Query("page")
+//        page: Int,
+//
+//        @Query("size")
+//        size: Int
+//    ): Response<PassengerResponse>
 }

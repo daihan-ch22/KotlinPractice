@@ -2,11 +2,13 @@ package dan.jetpack.section8_paginglv3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -23,6 +25,9 @@ class MainActivity : AppCompatActivity() {
 
         val rv = findViewById<RecyclerView>(R.id.rv)
         val myAdapter = MyAdapter()
+
+        rv.layoutManager = LinearLayoutManager(this)
+        rv.adapter = myAdapter
 
         lifecycleScope.launch {
             viewModel.items.collect() {
@@ -42,6 +47,11 @@ class MainActivity : AppCompatActivity() {
                 val isLoadingPrev = it.source.append is LoadState.Loading
                 loadingPrev.isVisible = isLoadingPrev
             }
+        }
+
+        val refresh = findViewById<Button>(R.id.refresh)
+        refresh.setOnClickListener {
+            myAdapter.refresh()
         }
     }
 }
