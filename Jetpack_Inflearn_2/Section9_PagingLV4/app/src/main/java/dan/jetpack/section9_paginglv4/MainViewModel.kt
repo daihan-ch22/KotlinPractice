@@ -11,14 +11,16 @@ import dan.jetpack.section9_paginglv4.network.GitApi
 import dan.jetpack.section9_paginglv4.network.RetrofitInstance
 import kotlinx.coroutines.flow.Flow
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    val str : String
+) : ViewModel() {
 
     private val api = RetrofitInstance.getInstance().create(GitApi::class.java)
 
     val items : Flow<PagingData<Items>> = Pager (
         config = PagingConfig(pageSize = 30),
         pagingSourceFactory = {
-            GithubPagingSource(api, "android")
+            GithubPagingSource(api, str)
         }
     )
         .flow
